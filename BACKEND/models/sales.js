@@ -8,22 +8,22 @@ const Sales = new Schema({
   week: {
     type: Number,
   },
-  vehicleName: {
+  vName: {
     type: String,
   },
-  rentealNumber: {
+  rNumber: {
     type: String,
   },
-  vehicaleNumber: {
+  vNumber: {
     type: String,
   },
-  noOfKm: {
+  numberOfkm: {
     type: Number,
   },
   payment: {
     type: Number,
   },
-  numberOfdays: {
+  numberOfday: {
     type: Number,
   },
   revenue: {
@@ -31,6 +31,6 @@ const Sales = new Schema({
   },
 });
 
-const newSales = mongoose.model("sales", Sales); //create database collection
+const newSales = mongoose.model("sale", Sales); //create database collection
 
 module.exports = newSales;

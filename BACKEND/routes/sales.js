@@ -3,37 +3,38 @@ const Sales = require("../models/sales");
 
 //route for creating database insertion
 router.route("/create").post(async (req, res) => {
-  const { month, vehicleName, rentealNumber, vehicaleNumber } = req.body;
+  const { month, vName, rNumber, vNumber } = req.body;
 
-  const { noOfKm, payment, numberOfdays, revenue, week } = Number(req.body);
+  const week = Number(req.body.week);
+  const numberOfkm = Number(req.body.numberOfkm);
+  const payment = Number(req.body.payment);
+  const numberOfday = Number(req.body.numberOfday);
+  const revenue = Number(req.body.revenue);
 
-  // create a new object using database schema
   const newSales = new Sales({
-    vehicleName,
-    rentealNumber,
-    vehicaleNumber,
-    noOfKm,
-    payment,
-    numberOfdays,
-    revenue,
     month,
+    vName,
+    rNumber,
+    vNumber,
     week,
+    numberOfkm,
+    payment,
+    numberOfday,
+    revenue,
   });
 
-  // check the availability of saving data
-//   const isAvailable = await Sales.findOne({ vehicaleNumber: vehicaleNumber });
+  const isAvailable = await Sales.findOne({ vNumber: vNumber });
 
-//   if (isAvailable) {
-//     return res.status(401).json({
-//       error: "Already Exist this Vehicle! Plase Enter new vehicle 😘",
-//     });
-//   }
+  if (isAvailable) {
+    return res
+      .status(401)
+      .json({ error: "Already Exist this Vehicle! Plz add new 😀" });
+  }
 
-  // else save to the db
   await newSales
     .save()
-    .then(() => res.status(200).json({ success: true }))
-    .catch((error) => res.status(500).json({ succes: false, error: error }));
+    .then((data) => res.status(200).json({ success: data }))
+    .catch(() => res.status(500).json({ success: false, error: error }));
 });
 
 //route for fetching all the data
@@ -66,12 +67,12 @@ router.route("/update/:id").put(async (req, res) => {
   //backend route for updating relavant data and passing back
   const { id } = req.params;
   const {
-    vehicleName,
-    rentealNumber,
-    vehicaleNumber,
-    noOfKm,
+    vName,
+    rNumber,
+    vNumber,
+    numberOfkm,
     payment,
-    numberOfdays,
+    numberOfday,
     revenue,
     month,
     week,
@@ -79,12 +80,12 @@ router.route("/update/:id").put(async (req, res) => {
 
   //find the document by and update the relavant data
   await Sales.findByIdAndUpdate(id, {
-    vehicleName,
-    rentealNumber,
-    vehicaleNumber,
-    noOfKm,
+    vName,
+    rNumber,
+    vNumber,
+    numberOfkm,
     payment,
-    numberOfdays,
+    numberOfday,
     revenue,
     month,
     week,
