@@ -192,6 +192,8 @@ export default class Report extends Component {
             </Link>
           </div>
         </center>
+        <br/>
+        <br/>
       </div>
     );
   }

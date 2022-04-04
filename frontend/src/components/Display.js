@@ -222,6 +222,7 @@ const Display = () => {
       </div>
       <br />
       <br />
+      <br/>
     </>
   );
 };

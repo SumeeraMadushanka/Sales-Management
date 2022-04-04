@@ -8,6 +8,7 @@ import Create from "./components/Create";
 import Display from "./components/Display";
 import Report from "./components/Report";
 import Edit from "./components/Edit";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/report" element={[<NavBar/>,<Report />]} />
           <Route path="/edit/:id" element={[<NavBar/>,<Edit />]} />
         </Routes>
+        <Footer/>
       </Router>
     </div>
   );
