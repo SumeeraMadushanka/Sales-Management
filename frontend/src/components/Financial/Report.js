@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import jsPDF from "jspdf";
-import "./Styles/Report.css";
+import "../Styles/Report.css";
 import html2canvas from "html2canvas";
 import { Link } from "react-router-dom";
 
@@ -26,10 +26,10 @@ export default class Report extends Component {
       const doc = new jsPDF("p", "mm", "a4");
       doc.setTextColor(255, 0, 0);
       doc.setFontSize(28);
-      doc.text(65, 10, "Sales Management");
+      doc.text(65, 10, "Financial Management");
       doc.setTextColor(0, 0, 255);
       doc.setFontSize(16);
-      doc.text(10, 70, "Sales Details");
+      doc.text(10, 70, "Financial Details");
       doc.setTextColor(0, 255, 0);
       doc.setFontSize(12);
       doc.text(145, 85, "Signature :");
@@ -80,13 +80,13 @@ export default class Report extends Component {
       const date = Date().split(" ");
       // we use a date string to generate our filename.
       const dateStr =
-        "sales_" + date[0] + date[1] + date[2] + date[3] + date[4];
+        "financial_" + date[0] + date[1] + date[2] + date[3] + date[4];
       doc.save(`report_${dateStr}.pdf`);
     });
   }
 
   componentDidMount() {
-    axios.get("/sales/").then((response) => {
+    axios.get("/financial/").then((response) => {
       console.log(response?.data);
       this.setState({
         ReportData: response?.data,
@@ -112,7 +112,7 @@ export default class Report extends Component {
                 className="text-3xl font-bold text-gray-900"
                 style={{ color: "#f4f4f4", fontFamily: "cursive" }}
               >
-                Sales Report 😍
+                Financial Report 😍
               </h1>
             </div>
           </header>
@@ -125,14 +125,9 @@ export default class Report extends Component {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableCell align="right">Month</TableCell>
-              <TableCell align="right">Week</TableCell>
-              <TableCell align="right">Vehicale Name</TableCell>
-              <TableCell align="right">Rental Number</TableCell>
-              <TableCell align="right">Vehicale Number</TableCell>
-              <TableCell align="right">No Of Kilometers</TableCell>
-              <TableCell align="right">Payment Per Day(Rs)</TableCell>
-              <TableCell align="right">Number Of Days</TableCell>
-              <TableCell align="right">Revenue(Rs)</TableCell>
+              <TableCell align="right">Revenue (Rs)</TableCell>
+              <TableCell align="right">Expenditure (Rs)</TableCell>
+              <TableCell align="right">Profit Or Loss(Rs)</TableCell>
             </TableHead>
             <TableBody>
               {this.state?.ReportData?.map((p, index) => {
@@ -141,25 +136,10 @@ export default class Report extends Component {
                     <TableCell align="right" className="-translate-x-2">
                       {p.month}
                     </TableCell>
-                    <TableCell align="right">{p.week}</TableCell>
-                    <TableCell align="right">{p.vName}</TableCell>
+                    <TableCell align="right">{p.revenue}</TableCell>
+                    <TableCell align="right">{p.expenditure}</TableCell>
                     <TableCell align="center" className=" translate-x-12">
-                      {p.rNumber}
-                    </TableCell>
-                    <TableCell align="center" className=" translate-x-12">
-                      {p.vNumber}
-                    </TableCell>
-                    <TableCell align="center" className=" translate-x-12">
-                      {p.numberOfkm}
-                    </TableCell>
-                    <TableCell align="center" className=" translate-x-6">
-                      {p.payment}
-                    </TableCell>
-                    <TableCell align="center" className=" translate-x-6">
-                      {p.numberOfday}
-                    </TableCell>
-                    <TableCell align="center" className=" translate-x-6">
-                      {p.revenue}
+                      {p.profitOrLoss}
                     </TableCell>
                   </TableRow>
                 );
@@ -181,7 +161,7 @@ export default class Report extends Component {
             </button>
             <br />
 
-            <Link to="/display">
+            <Link to="/financialDisplay">
               <button
                 variant="contained"
                 color="primary"
@@ -192,8 +172,8 @@ export default class Report extends Component {
             </Link>
           </div>
         </center>
-        <br/>
-        <br/>
+        <br />
+        <br />
       </div>
     );
   }

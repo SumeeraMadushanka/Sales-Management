@@ -14,28 +14,20 @@ const NavBar = () => {
         <li className="text-2xl inline-block pt-4 pb-4 translate-x-14 float-left text-sky-700 cursor-pointer">
           <Link to="/dashbord">DASHBOARD</Link>
         </li>
-        <li className="inline-block pt-4 pb-4 -translate-x-16 ">
+        <li className="inline-block pt-4 pb-4 -translate-x-16 float-right">
           <Link
-            to="/create"
+            to="/financialDisplay"
             className="pl-6 pr-8 hover:text-lime-500 hover:bg-gray-700 py-2 hover:py-2 px-4 hover:px-4 hover:rounded-full  duration-500"
           >
-            Create
+            Financial Details
           </Link>
         </li>
-        <li className="inline-block pt-4 pb-4 -translate-x-16">
+        <li className="inline-block pt-4 pb-4 -translate-x-16 float-right">
           <Link
             to="/display"
             className="pl-6 pr-8 hover:text-lime-500 hover:bg-gray-700 py-2 hover:py-2 px-4 hover:px-4 hover:rounded-full  duration-500"
           >
-            Display
-          </Link>
-        </li>
-        <li className="inline-block pt-4 pb-4 -translate-x-16">
-          <Link
-            to="/report"
-            className="pl-6 pr-8 hover:text-lime-500 hover:bg-gray-700 py-2 hover:py-2 px-4 hover:px-4 hover:rounded-full  duration-500"
-          >
-            Report
+            Sales Details
           </Link>
         </li>
       </ul>

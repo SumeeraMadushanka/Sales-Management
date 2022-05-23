@@ -1,7 +1,6 @@
 import React from "react";
 
 const Footer = () => {
-  var today = new Date();
 
   return (
     <footer class="text-gray-600 body-font bg-neutral-800">
@@ -67,7 +66,9 @@ const Footer = () => {
           </a>
         </span>
       </div>
-    </footer>
+    // </footer>
+
+    
   );
 };
 
