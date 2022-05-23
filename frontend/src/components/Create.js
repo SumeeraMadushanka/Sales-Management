@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { TextField, Button } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./Styles/Create.css";
 
 const Create = () => {
   const [month, setMonth] = useState(undefined);
@@ -90,7 +91,7 @@ const Create = () => {
 
   return (
     <>
-      <div>
+      <div className="bg-bg-create bg-cover">
         <Box
           sx={{
             px: 20,
@@ -101,7 +102,7 @@ const Create = () => {
           }}
         ></Box>
         <div
-          className=" mx-60 mb-14"
+          className=" mx-60  bg-shadow rounded-2xl"
           style={{
             background: "#7b4397" /* fallback for old browsers */,
             background:
@@ -114,7 +115,7 @@ const Create = () => {
             Sales Details <br />
           </div>
           <form onSubmit={handleSubmit}>
-            <div class="container  py-20 mx-auto ">
+            <div class="container  py-10 mx-auto ">
               <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
                 <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-white">
                   Month:
@@ -282,6 +283,7 @@ const Create = () => {
               </div>
             </div>
           </form>
+
           <br />
           <br />
         </div>

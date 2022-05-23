@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SettingsApplicationsSharpIcon from "@mui/icons-material/SettingsApplicationsSharp";
 
 const Display = () => {
   const [data, setData] = useState([]);
@@ -63,9 +64,14 @@ const Display = () => {
         </div>
       </div>
       <br />
+
       <div className="flex flex-col ">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-1">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="mb-6 mt-2 cursor-pointer bg-orange-600 p-2 font-bold w-44 rounded-xl">
+              <Link to="/create">ADD SALES DETAILS</Link>
+            </div>
+
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-black">
@@ -134,7 +140,7 @@ const Display = () => {
                   {filteredData?.length === 0 ? ( //conditional satement
                     <center>
                       <h1 style={{ color: "red" }}>
-                        Oops.. There are no Employees Yet 😒{" "}
+                        Oops.. There are no Sales Yet 😒{" "}
                       </h1>
                     </center>
                   ) : (
@@ -218,11 +224,16 @@ const Display = () => {
               </table>
             </div>
           </div>
+          <div className=" float-right font-semibold mb-4 mt-4">
+            <Link to="/report">
+              <SettingsApplicationsSharpIcon /> <u>Generate Report</u>
+            </Link>
+          </div>
         </div>
       </div>
       <br />
       <br />
-      <br/>
+      <br />
     </>
   );
 };

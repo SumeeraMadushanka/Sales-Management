@@ -10,19 +10,41 @@ import Report from "./components/Report";
 import Edit from "./components/Edit";
 import Footer from "./components/Footer";
 
+import FinancialDisplay from "./components/Financial/Display";
+import FinancialCreate from "./components/Financial/Create";
+import FinancialEdit from "./components/Financial/Edit";
+import FinancialReport from "./components/Financial/Report";
+
 const App = () => {
   return (
     <div>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashbord" element={[<NavBar/>,<Dashboard />]} />
-          <Route path="/create" element={[<NavBar/>,<Create />]} />
-          <Route path="/display" element={[<NavBar/>,<Display />]} />
-          <Route path="/report" element={[<NavBar/>,<Report />]} />
-          <Route path="/edit/:id" element={[<NavBar/>,<Edit />]} />
+          <Route path="/dashbord" element={[<NavBar />, <Dashboard />]} />
+          <Route path="/create" element={[<NavBar />, <Create />]} />
+          <Route path="/display" element={[<NavBar />, <Display />]} />
+          <Route path="/report" element={[<NavBar />, <Report />]} />
+          <Route path="/edit/:id" element={[<NavBar />, <Edit />]} />
+
+          <Route
+            path="/financialDisplay"
+            element={[<NavBar />, <FinancialDisplay />]}
+          />
+          <Route
+            path="/financialCreate"
+            element={[<NavBar />, <FinancialCreate />]}
+          />
+          <Route
+            path="/financialEdit/:id"
+            element={[<NavBar />, <FinancialEdit />]}
+          />
+          <Route
+            path="/financialReport"
+            element={[<NavBar />, <FinancialReport />]}
+          />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
