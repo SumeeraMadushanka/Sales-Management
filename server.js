@@ -29,7 +29,7 @@ app.listen(PORT, () => {
 
 app.use("/sales", require("./BACKEND/routes/sales"));
 app.use("/financial", require("./BACKEND/routes/financial"));
-app.use("/api/auth", require("./backend/routes/auth/auth"));
+app.use("/api/auth", require("./Backend/routes/auth/auth"));
 
 if(process.env.NODE_ENV === "production"){
   app.use(express.static(path.join(__dirname, "/frontend/build")));
